@@ -62,16 +62,22 @@ public class UserServlet extends HttpServlet {
             // URL 경로에 따라 서로 다른 메서드 호출
             switch (action) {
                 case "/new": // "새 사용자 입력 폼 표시"
+                    showNewForm(request, response);
                     break;
                 case "/insert": // 새 사용자 정보 저장
+                    insertUser(request, response);
                     break;
                 case "/edit": // "수정 폼 표시"
+                    showEditForm(request, response);
                     break;
                 case "/update": // 기존 사용자 정보 수정
+                    updateUser(request, response);
                     break;
                 case "/delete": // 사용자 삭제
+                    deleteUser(request, response);
                     break;
                 default: // 사용자 목록 출력 (기본 동작)
+                    listUser(request, response);
                     break;
             }
         } catch (SQLException e) {
