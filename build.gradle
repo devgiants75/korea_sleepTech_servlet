@@ -6,6 +6,10 @@ plugins {
 group 'com.study'
 version '1.0-SNAPSHOT'
 
+war {
+    archiveFileName = 'ROOT.war' // war 파일명을 ROOT로 지정
+}
+
 repositories {
     mavenCentral()
 }
