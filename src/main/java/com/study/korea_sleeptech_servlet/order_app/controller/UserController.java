@@ -19,7 +19,7 @@ import java.util.List;
 * : JSP와 비즈니스로직(DAO)+DB 사이를 Servlet이 통제
 *   >> Servlet 컨트롤러
 * */
-@WebServlet("/user")
+@WebServlet("/order-app/user")
 public class UserController extends HttpServlet {
     private final UserDao userDao = new UserDaoImpl();
 

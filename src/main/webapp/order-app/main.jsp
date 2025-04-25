@@ -14,9 +14,9 @@
     <div class="container">
         <h1>쇼핑몰 관리 시스템</h1>
         <a href="/order-app/userForm.jsp">회원가입</a>
-        <a href="/order-app/userList.jsp">회원 목록</a>
+        <a href="/order-app/user">회원 목록</a>
         <a href="/order-app/orderForm.jsp">주문 등록</a>
-        <a href="/order-app/orderList.jsp">주문 목록</a>
+        <a href="/order-app/order">주문 목록</a>
     </div>
 </body>
 </html>

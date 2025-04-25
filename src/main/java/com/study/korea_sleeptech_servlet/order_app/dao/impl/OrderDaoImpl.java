@@ -14,9 +14,9 @@ import java.util.List;
 public class OrderDaoImpl implements OrderDao {
     private final Connection conn = DBConnection.getInstance().getConnection();
 
-    private final String INSERT = "INSERT INTO order (user_id, product_name, amount) VALUES (?, ?, ?)";
-    private final String FIND_BY_USER_ID = "SELECT * FROM order WHERE user_id = ?";
-    private final String FIND_ALL = "SELECT * FROM order";
+    private final String INSERT = "INSERT INTO `order` (user_id, product_name, amount) VALUES (?, ?, ?)";
+    private final String FIND_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
+    private final String FIND_ALL = "SELECT * FROM `order`";
 
     @Override
     public boolean save(Order order) {

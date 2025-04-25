@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/order")
+@WebServlet("/order-app/order")
 public class OrderController extends HttpServlet {
     private final OrderDao orderDao = new OrderDaoImpl();
     private final UserDao userDao = new UserDaoImpl();
@@ -37,8 +37,14 @@ public class OrderController extends HttpServlet {
 
         Order order = new Order(userId, productName, amount);
         boolean result = orderDao.save(order);
-        response.getWriter().println(result ? "주문 완료" : "주문 실패");
-        request.getRequestDispatcher("/order-app/orderForm.jsp").forward(request, response);
+        request.setAttribute("message", result ? "주문 완료" : "주문 실패");
+
+        if (result) {
+            response.sendRedirect("order");
+        } else {
+            request.setAttribute("message", "주문 실패");
+            request.getRequestDispatcher("/order-app/orderForm.jsp").forward(request, response);
+        }
     }
 
     @Override

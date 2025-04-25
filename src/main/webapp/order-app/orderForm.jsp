@@ -22,7 +22,7 @@
 <body>
   <div class="container">
     <h2>주문 등록</h2>
-    <form action="order" method="post">
+    <form action="/order-app/order" method="post">
       <label for="userId">사용자 ID</label>
       <input type="text" id="userId" name="userId" placeholder="사용자 ID 입력" required />
 

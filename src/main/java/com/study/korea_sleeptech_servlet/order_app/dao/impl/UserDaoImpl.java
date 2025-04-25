@@ -11,10 +11,10 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private final Connection conn = DBConnection.getInstance().getConnection();
 
-    private final String INSERT = "INSERT INTO user (name, email) VALUES (?, ?)";
-    private final String FIND_BY_EMAIL = "SELECT * FROM user WHERE email = ?";
-    private final String FIND_BY_ID = "SELECT * FROM user WHERE id = ?";
-    private final String FIND_ALL = "SELECT * FROM user";
+    private final String INSERT = "INSERT INTO `user` (name, email) VALUES (?, ?)";
+    private final String FIND_BY_EMAIL = "SELECT * FROM `user` WHERE email = ?";
+    private final String FIND_BY_ID = "SELECT * FROM `user` WHERE id = ?";
+    private final String FIND_ALL = "SELECT * FROM `user`";
 
     @Override
     public boolean save(User user) {
