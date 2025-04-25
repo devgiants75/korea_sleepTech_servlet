@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.study.korea_sleeptech_servlet.order_app.entity.Order" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -29,15 +31,28 @@
         <th>상품명</th>
         <th>수량</th>
       </tr>
-      <%-- JSTL(Core Tag Library)의 반복문 태그 --%>
-      <c:forEach var="order" items="${orderList}">
-        <tr>
-          <td>${order.id}</td>
-          <td>${order.userId}</td>
-          <td>${order.productName}</td>
-          <td>${order.amount}</td>
-        </tr>
-      </c:forEach>
+      <%
+        List<Order> orderList = (List<Order>) request.getAttribute("orderList");
+
+        if (orderList != null && !orderList.isEmpty()) {
+          for (Order order : orderList) {
+      %>
+      <tr>
+        <td><%= order.getId() %></td>
+        <td><%= order.getUserId() %></td>
+        <td><%= order.getProductName() %></td>
+        <td><%= order.getAmount() %></td>
+      </tr>
+      <%
+        }
+      } else {
+      %>
+      <tr>
+        <td colspan="4">주문 정보가 없습니다.</td>
+      </tr>
+      <%
+        }
+      %>
     </table>
   </div>
 </body>

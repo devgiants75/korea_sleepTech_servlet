@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.study.korea_sleeptech_servlet.order_app.entity.User" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 25. 4. 25.
@@ -28,14 +29,27 @@
                 <th>이름</th>
                 <th>이메일</th>
             </tr>
-            <%-- JSTL(Core Tag Library)의 반복문 태그 --%>
-            <c:forEach var="user" items="${userList}">
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                </tr>
-            </c:forEach>
+            <%
+                List<User> userList = (List<User>) request.getAttribute("userList");
+
+                if (userList != null) {
+                    for (User user : userList) {
+            %>
+            <tr>
+                <td><%= user.getId() %></td>
+                <td><%= user.getName() %></td>
+                <td><%= user.getEmail() %></td>
+            </tr>
+            <%
+                }
+            } else {
+            %>
+            <tr>
+                <td colspan="3">사용자 정보가 없습니다.</td>
+            </tr>
+            <%
+                }
+            %>
         </table>
     </div>
 </body>
