@@ -16,6 +16,7 @@ public class OrderDaoImpl implements OrderDao {
 
     private final String INSERT = "INSERT INTO order (user_id, product_name, amount) VALUES (?, ?, ?)";
     private final String FIND_BY_USER_ID = "SELECT * FROM order WHERE user_id = ?";
+    private final String FIND_ALL = "SELECT * FROM order";
 
     @Override
     public boolean save(Order order) {
@@ -34,9 +35,19 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> findByUserId(int userId) {
         List<Order> orders = new ArrayList<>();
+        String sql;
 
-        try (PreparedStatement pstmt = conn.prepareStatement(FIND_BY_USER_ID)) {
-            pstmt.setInt(1, userId);
+        if (userId == 0) {
+            sql = FIND_ALL;
+        } else {
+            sql = FIND_BY_USER_ID;
+        }
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            if (userId != 0) {
+                pstmt.setInt(1, userId);
+            }
+
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -52,5 +63,10 @@ public class OrderDaoImpl implements OrderDao {
         }
 
         return orders;
+    }
+
+    @Override
+    public List<Order> findAll() {
+        return findByUserId(0); // 내부적으로 userId가 0이면 전체 조회
     }
 }
