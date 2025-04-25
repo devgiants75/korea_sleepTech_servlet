@@ -7,12 +7,14 @@ import com.study.korea_sleeptech_servlet.order_app.dao.impl.UserDaoImpl;
 import com.study.korea_sleeptech_servlet.order_app.entity.Order;
 import com.study.korea_sleeptech_servlet.order_app.entity.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+@WebServlet("/order")
 public class OrderController extends HttpServlet {
     private final OrderDao orderDao = new OrderDaoImpl();
     private final UserDao userDao = new UserDaoImpl();
