@@ -22,7 +22,7 @@
 <body>
     <div class="container">
         <h2>회원가입</h2>
-        <form action="user" method="post">
+        <form action="/order-app/userList.jsp" method="post">
             <label for="name">이름</label>
             <input type="text" id="name" name="name" placeholder="이름 입력" required />
 
